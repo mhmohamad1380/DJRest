@@ -1,0 +1,15 @@
+<div style="border: 1px solid black;padding: 10px">
+    {% for article in Articles %}
+        <article>
+            <h2><a href="{% url 'article_detail' article.slug article.pk %}">{{ article.title }}</a></h2>
+            <div>{{ article.author }}</div>
+            <div>{{ article.created }}</div>
+            {% ifchanged %}<div>{{ article.updated }}</div>{% endifchanged %}
+            <p>{{ article.content|safe }}</p>
+
+        </article>
+        <hr>
+    {% empty %}
+        <center><h1>Nothing to Show</h1></center>
+    {% endfor %}
+</div>

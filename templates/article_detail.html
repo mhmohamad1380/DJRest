@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load thumbnail %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ Article.title }}</title>
+</head>
+<body>
+    <article>
+        <center>
+            {% thumbnail Article.image "800x600" crop="center" as im %}
+                <img width="{{ im.width }}" height="{{ im.height }}" src="{{ im.url }}" alt="{{ im.title }} Image">
+            {% endthumbnail %}
+        </center>
+    <h2>{{ Article.title }}</h2>
+    <div>{{ Article.author }}</div>
+    <div>{{ Article.created }}</div>
+    <p>{{ Article.content|safe }}</p>
+    </article>
+</body>
+</html>
